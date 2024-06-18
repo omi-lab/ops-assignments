@@ -1,0 +1,12 @@
+version: '3'
+
+includes:
+  k8s: ./Taskfile.k8s.yml
+  00: ./00/Taskfile.yml
+  01: ./01/Taskfile.yml
+  02: ./02/Taskfile.yml
+
+tasks:
+  default:
+    cmds:
+      - task --list-all

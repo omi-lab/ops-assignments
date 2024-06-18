@@ -1,0 +1,14 @@
+version: '3'
+
+tasks:
+  start:
+    desc: Deploy the API against a local kubernetes cluster.
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - tilt up
+  
+  stop:
+    desc: Deploy the API against a local kubernetes cluster.
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - tilt down

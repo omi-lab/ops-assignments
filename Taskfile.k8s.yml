@@ -1,0 +1,12 @@
+version: '3'
+
+tasks:
+  create:
+    desc: Start a local kind cluster.
+    cmds:
+      - kind create cluster
+
+  delete:
+    desc: Cleanup local kind cluster.
+    cmds:
+      - kind delete cluster

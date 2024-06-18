@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - deployment.yaml
+  - hpa.yaml
+  - svc.yaml
+
+commonLabels:
+  app.kubernetes.io/version: 1.0.0
+  app.kubernetes.io/part-of: assignments
+  app.kubernetes.io/managed-by: kustomize
+
+images:
+  - name: api
+    newTag: master

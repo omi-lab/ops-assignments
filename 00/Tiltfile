@@ -1,0 +1,17 @@
+load('ext://namespace', 'namespace_create', 'namespace_inject')
+
+trigger_mode(TRIGGER_MODE_MANUAL)
+
+docker_prune_settings(disable=False, max_age_mins=360, num_builds=1, keep_recent=1)
+
+docker_build(
+  ref='api',
+  context='.',
+  dockerfile='Dockerfile',
+)
+
+namespace_create('api')
+
+k8s_yaml(namespace_inject(kustomize('deployments/bases'), 'api'))
+
+k8s_resource('api', port_forwards=3000)
